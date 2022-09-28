@@ -8,12 +8,19 @@ class signupController extends Controller
 {
     public function SaveInfo(Request $request)
     {
+            $user=signup::where('email',$request->id)->first();
+            if(isset($user))
+            {
+                return 'This email already exist';
+            }
+            else{
             $res=signup::create([
             'Fname'=>$request->First,
             'Lname'=>$request->Last,
             'email'=>$request->id,
             'password'=>$request->pass
         ]);
+    }
         return'User has been added';
     }
     public function Auth($usermail,$userpass)

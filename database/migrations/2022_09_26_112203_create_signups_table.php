@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('Fname');
             $table->string('Lname');
-            $table->string('email');
+            $table->string('email')->uniqid();
             $table->string('password');
             $table->timestamps();
         });
