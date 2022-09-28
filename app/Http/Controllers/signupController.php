@@ -12,8 +12,7 @@ class signupController extends Controller
             'Fname'=>$request->First,
             'Lname'=>$request->Last,
             'email'=>$request->id,
-            'password'=>$request->pass,
-            'Cpassword'=>$request->Cpass
+            'password'=>$request->pass
         ]);
         return'User has been added';
     }
@@ -33,6 +32,23 @@ class signupController extends Controller
         else{//if the mail entered is incorrect
             return 'INCORRECT EMAIL';
         }
+    }
+    public function ResetPass($Mail,$resetPass)
+    {
+        $user=signup::where('email',$Mail)->first();
+        if(isset($user))
+        {
+             $user->password=$resetPass;
+             $user->save();
+             return'Your Password has been successfully changed';
+        }
+        else{
+            return'The user email doesnot exist';
+        }
+
+        //return $user;
+    
+        
     }
 
 
