@@ -57,6 +57,19 @@ class signupController extends Controller
     
         
     }
+    public function DeleteAcc($mail)
+        {
+            $user=signup::where('email',$mail)->first();
+            if(isset($user))
+            {
+                $user->delete();
+                return 'Account Deleted Successfully';
+            }
+            else{
+                return 'No User with such mail exist';
+            }
 
+        }
 
 }
+

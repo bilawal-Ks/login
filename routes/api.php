@@ -7,3 +7,4 @@ use App\Http\Controllers\signupController;
 Route::post('signUp',[signupController::class,'SaveInfo']);
 Route::get('email/pass/{id}/{password}',[signupController::class,'Auth']);
 Route::get('email/password/{mail}/{pass}',[signupController::class,'ResetPass']);
+Route::get('email/{mail}',[signupController::class,'DeleteAcc']);
